@@ -16,13 +16,6 @@
       "toolsId": "9cb07c25-efaf-4a75-9de8-3ec99ad3b063"
     },
     "dataSources": {
-      "ZUI_MAINTENANCEORDER_VAN": {
-        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_MAINTENANCEORDER_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/mainService/ZUI_MAINTENANCEORDER_VAN.xml"
-        }
-      },
       "annotation": {
         "type": "ODataAnnotation",
         "uri": "annotations/annotation.xml",
@@ -30,13 +23,19 @@
           "localUri": "annotations/annotation.xml"
         }
       },
+      "ZUI_MAINORDEROPERATNANALYS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_MAINORDEROPERATNANALYS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/ZUI_MAINORDEROPERATNANALYS_VAN.xml"
+        }
+      },
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZUI_MAINTENANCEORDER/",
+        "uri": "/sap/opu/odata/SAP/ZUI_MAINORDEROPERATNANALYS/",
         "type": "OData",
         "settings": {
           "annotations": [
-            "ZUI_MAINTENANCEORDER_VAN",
-            "annotation"
+            "ZUI_MAINORDEROPERATNANALYS_VAN"
           ],
           "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
@@ -85,21 +84,14 @@
           "bundleName": "com.sap.lh.mr.zlhmaintenanceorder.i18n.i18n"
         }
       },
-      "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {
-          "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Inline",
-          "refreshAfterChange": false,
-          "metadataUrlParams": {
-            "sap-value-list": "none"
-          }
-        }
-      },
       "@i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "uri": "i18n/i18n.properties"
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
       }
     },
     "resources": {
@@ -120,8 +112,8 @@
       "showDraftToggle": false
     },
     "pages": {
-      "ListReport|MaintenanceOrder": {
-        "entitySet": "MaintenanceOrder",
+      "ListReport|MaintOrderOperatnAnalysis": {
+        "entitySet": "MaintOrderOperatnAnalysis",
         "component": {
           "name": "sap.suite.ui.generic.template.ListReport",
           "list": true,
@@ -143,8 +135,8 @@
           }
         },
         "pages": {
-          "ObjectPage|MaintenanceOrder": {
-            "entitySet": "MaintenanceOrder",
+          "ObjectPage|MaintOrderOperatnAnalysis": {
+            "entitySet": "MaintOrderOperatnAnalysis",
             "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
             "component": {
               "name": "sap.suite.ui.generic.template.ObjectPage"

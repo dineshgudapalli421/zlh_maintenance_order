@@ -9,7 +9,7 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertErrors: false
         ui5:
           path:
             - /resources
@@ -19,6 +19,9 @@ server:
           - path: /sap
             url: http://sapsdvapp.aws.londonhydro.cloud:8000
             client: '200'
+          - url: http://sapsdvapp.aws.londonhydro.cloud:8000/
+            client: '200'
+            path: /sap/opu/odata/SAP/ZUI_MAINORDEROPERATNANALYS/
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -35,10 +38,10 @@ server:
       configuration:
         mountPath: /
         services:
-          - urlPath: /sap/opu/odata/sap/ZUI_MAINTENANCEORDER
+          - urlPath: /sap/opu/odata/SAP/ZUI_MAINORDEROPERATNANALYS
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
         annotations:
-          - localPath: ./webapp/localService/mainService/ZUI_MAINTENANCEORDER_VAN.xml
-            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_MAINTENANCEORDER_VAN',Version='0001')/$value/
+          - localPath: ./webapp/localService/mainService/ZUI_MAINORDEROPERATNANALYS_VAN.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_MAINORDEROPERATNANALYS_VAN',Version='0001')/$value/

@@ -38,7 +38,7 @@
         <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="cds_zwm_maintenanceorder" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <Schema Namespace="cds_zwm_mainorderoperanalysis" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
             <EntityType Name="I_CalendarMonthVHType" sap:label="Value Help CDS for Calendar Month" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="CalendarMonth"/>
@@ -61,61 +61,86 @@
                 <Property Name="OrderType_Text" Type="Edm.String" MaxLength="40" sap:label="Order Type Name" sap:quickinfo="Name of an Order Type" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="OrderCategory" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Order Category"/>
             </EntityType>
-            <EntityType Name="MaintenanceOrderType" sap:label="Maintenance Order Details" sap:content-version="1">
+            <EntityType Name="MaintOrderOperatnAnalysisType" sap:label="Maintenance Order Details" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="MaintenanceOrder"/>
                 </Key>
                 <Property Name="MaintenanceOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number" sap:value-list="standard"/>
+                <Property Name="MaintenanceOrderOperation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Undefined range (can be used for patch levels)" sap:heading=""/>
                 <Property Name="MaintOrderRoutingNumber" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no." sap:quickinfo="Routing number of operations in the order"/>
                 <Property Name="MaintenanceOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="OrderTypeName" sap:label="Order Type" sap:value-list="standard"/>
                 <Property Name="OrderTypeName" Type="Edm.String" MaxLength="40" sap:label="Order Type Name" sap:quickinfo="Name of an Order Type"/>
-                <Property Name="MaintenanceOrderCategory" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="OrderCategoryName" sap:label="Order category"/>
-                <Property Name="OrderCategoryName" Type="Edm.String" MaxLength="60" sap:label="Order Category Name"/>
-                <Property Name="MaintenanceOrderDesc" Type="Edm.String" MaxLength="40" sap:label="Description"/>
-                <Property Name="MaintObjectLocAcctAssgmtNmbr" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Loc/Acct Assignment" sap:quickinfo="Location and account assignment for technical object"/>
+                <Property Name="MaintOrderOperationCounter" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Counter" sap:quickinfo="General counter for order"/>
+                <Property Name="OrderSystemStatus" Type="Edm.String" MaxLength="224" sap:label="Order System Status" sap:quickinfo="Concatenated System Status"/>
+                <Property Name="OrderUserStatus" Type="Edm.String" MaxLength="224" sap:label="Order User Status" sap:quickinfo="Concatenated User Status"/>
                 <Property Name="MaintenanceNotification" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Notification" sap:quickinfo="Notification Number"/>
-                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
-                <Property Name="Equipment" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
-                <Property Name="SerialNumber" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Serial Number"/>
-                <Property Name="PersonnelNumber" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Person responsible" sap:quickinfo="Name of Person Reponsible for System"/>
-                <Property Name="FunctionalLocation" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="30 Characters" sap:heading=""/>
+                <Property Name="MaintenanceOrderInternalID" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="MaintOrderOperationlID" Type="Edm.String" MaxLength="18"/>
+                <Property Name="MaintenanceOrderDesc" Type="Edm.String" MaxLength="40" sap:label="Description"/>
+                <Property Name="ServiceDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Service Order" sap:quickinfo="Transaction ID"/>
+                <Property Name="MeterNumber" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="UtilitiesPremise" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Premise"/>
+                <Property Name="DeviceLocation" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="30 Characters" sap:heading=""/>
                 <Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:label="House Number"/>
                 <Property Name="Street" Type="Edm.String" MaxLength="60" sap:label="Street"/>
                 <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="City"/>
                 <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
                 <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code" sap:quickinfo="City postal code"/>
-                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="ProfitCenterName" sap:label="Profit Center"/>
-                <Property Name="ProfitCenterName" Type="Edm.String" MaxLength="20" sap:label="Profit Center Name" sap:quickinfo="Description of Profit Center"/>
-                <Property Name="MainWorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Main Work Center" sap:quickinfo="Main work center for maintenance tasks"/>
-                <Property Name="MaintenancePlanningPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Planning Plant" sap:quickinfo="Maintenance Planning Plant"/>
-                <Property Name="MainWorkCenterPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant for WorkCenter" sap:quickinfo="Plant associated with main work center"/>
-                <Property Name="MaintenancePlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Location Plant"/>
-                <Property Name="ServiceDocumentType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Transaction Type" sap:quickinfo="Business Transaction Type"/>
-                <Property Name="ServiceDocument" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Transaction ID"/>
-                <Property Name="ServiceDocumentItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Item Number in Doc." sap:quickinfo="Shortened Item Number in Document"/>
-                <Property Name="MaintOrderReferenceDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Reference Date" sap:quickinfo="PM Order: Reference Date"/>
-                <Property Name="MaintOrderReferenceTime" Type="Edm.Time" Precision="0" sap:label="Reference time" sap:quickinfo="Time of Reference Date"/>
-                <Property Name="MainWorkCompletedDateTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Main Work Completed" sap:quickinfo="Main Work Completed Date and Time"/>
-                <Property Name="TechnicalCompletionDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Technical Completion Date"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="MaintOrderOperationInternalID" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object number"/>
+                <Property Name="OperationCode" Type="Edm.String" MaxLength="20" sap:text="OperationName" sap:label="OperationCode" sap:quickinfo="User field with 20 characters" sap:value-list="standard"/>
+                <Property Name="OperationName" Type="Edm.String" MaxLength="30" sap:label="Op Code Desc."/>
+                <Property Name="OperationWorkCenterTypeCode" Type="Edm.String" MaxLength="1"/>
+                <Property Name="OperationWorkCenterInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Object ID" sap:quickinfo="Object ID of the resource"/>
+                <Property Name="WorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Work Center" sap:value-list="standard"/>
+                <Property Name="OperationControlKey" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Control Key"/>
+                <Property Name="OperationDescription" Type="Edm.String" MaxLength="40" sap:label="Operation Short Text"/>
+                <Property Name="OperationSystemStatus" Type="Edm.String" MaxLength="224" sap:label="Operation System Status" sap:quickinfo="Concatenated System Status"/>
+                <Property Name="OperationUserStatus" Type="Edm.String" MaxLength="224" sap:label="Operation User Status" sap:quickinfo="Concatenated User Status"/>
+                <Property Name="MaintOrderConfirmation" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Confirmation" sap:quickinfo="Completion confirmation number for the operation"/>
+                <Property Name="ConfirmEntryDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Entry Date" sap:quickinfo="Entry Date of Confirmation"/>
+                <Property Name="ConfirmEntryUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Entered by User" sap:quickinfo="User who Entered the Confirmation"/>
+                <Property Name="ConfirmPostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval" sap:label="Confirmation Posting Date" sap:quickinfo="Posting Date"/>
                 <Property Name="PermitType" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Permit" sap:quickinfo="Permit Key" sap:value-list="standard"/>
                 <Property Name="PermitNumber" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Approved by" sap:quickinfo="Permit Issued By"/>
                 <Property Name="PermitCreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
                 <Property Name="PermitCreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Creation Date"/>
                 <Property Name="NumberOfDays" Type="Edm.Int32"/>
+                <Property Name="NmbrOfMaintOrderOperations" Type="Edm.Int32"/>
                 <Property Name="CalendarQuarter" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:text="CalendarQuarterName" sap:label="Calendar Quarter"/>
                 <Property Name="CalendarQuarterName" Type="Edm.String" MaxLength="60" sap:label="Calendar Quarter Name"/>
                 <Property Name="CalendarMonth" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="CalendarMonthName" sap:label="Calendar Month" sap:value-list="standard"/>
                 <Property Name="CalendarMonthName" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
-                <Property Name="CalendarDay" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:text="WeekDayName" sap:label="Week Day"/>
+                <Property Name="CalendarDay" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="WeekDayName" sap:label="Calendar Day"/>
                 <Property Name="WeekDayName" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
                 <Property Name="CalendarYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Calendar Year"/>
-                <Property Name="NmbrOfMaintOrders" Type="Edm.Int32"/>
                 <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/>
                 <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Time created"/>
                 <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Entered By"/>
-                <Property Name="OrderHasLongText" Type="Edm.Boolean" sap:label="Order Has Long Text"/>
                 <Property Name="LastChangeByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Last Changed By"/>
                 <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="0" sap:label="Short Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+            </EntityType>
+            <EntityType Name="BPEMCasesType" sap:label="BPEM Cases for Waork Managment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BPEMCase"/>
+                    <PropertyRef Name="BPEMCaseObjectSequenceNumber"/>
+                </Key>
+                <Property Name="BPEMCase" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Case" sap:quickinfo="Clarification Case"/>
+                <Property Name="BPEMCaseObjectSequenceNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Seq. Number" sap:quickinfo="Sequential Number"/>
+                <Property Name="BPEMCaseName" Type="Edm.String" MaxLength="60" sap:label="Clarif. Case Text" sap:quickinfo="Clarification Case Text"/>
+                <Property Name="BPEMCaseCategory" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="BPEMCaseCategoryName" sap:label="Case Category" sap:quickinfo="Clarification Case Category"/>
+                <Property Name="BPEMCaseCategoryName" Type="Edm.String" MaxLength="50" sap:label="Case Category Text" sap:quickinfo="Short Text for Clarification Case Category"/>
+                <Property Name="BPEMCaseObjectRefObjectType" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Object Type"/>
+                <Property Name="BPEMCaseObjectRefObject" Type="Edm.String" MaxLength="70" sap:label="Key" sap:quickinfo="Object key"/>
+                <Property Name="BPEMCaseStatus" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:text="BPEMCaseStatusName" sap:label="Processing Status" sap:quickinfo="Processing Status of Clarification Case"/>
+                <Property Name="BPEMCaseStatusName" Type="Edm.String" MaxLength="60" sap:label="Clarif. Case Status" sap:quickinfo="Clarification Case Status Name"/>
+            </EntityType>
+            <EntityType Name="ZI_WM_OperationCodeType" sap:label="Operational Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OperationCode"/>
+                </Key>
+                <Property Name="OperationCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Op Code"/>
+                <Property Name="OperationName" Type="Edm.String" MaxLength="30" sap:label="Op Code Desc."/>
             </EntityType>
             <EntityType Name="ZI_WM_PermitVHType" sap:label="Permit Key Value Help" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -123,6 +148,14 @@
                 </Key>
                 <Property Name="PermitType" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Permit" sap:quickinfo="Permit Key"/>
                 <Property Name="PermitKeyName" Type="Edm.String" MaxLength="30" sap:label="Permit Text"/>
+            </EntityType>
+            <EntityType Name="ZI_WorkCenterVHType" sap:label="Work Center" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WorkCenterInternalID"/>
+                </Key>
+                <Property Name="WorkCenterInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Object ID" sap:quickinfo="Object ID of the resource"/>
+                <Property Name="WorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:text="WorkCenter" sap:label="Work Center"/>
+                <Property Name="WorkCenterText" Type="Edm.String" MaxLength="40" sap:label="Work Center Text"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
                 <Key>
@@ -152,20 +185,20 @@
                 <Property Name="CreatedAt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp"/>
                 <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="256"/>
                 <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256"/>
-                <NavigationProperty Name="Format" Relationship="cds_zwm_maintenanceorder.to_format" FromRole="FromRole_to_format" ToRole="ToRole_to_format"/>
-                <NavigationProperty Name="TableColumns" Relationship="cds_zwm_maintenanceorder.to_tablecolumns" FromRole="FromRole_to_tablecolumns" ToRole="ToRole_to_tablecolumns"/>
-                <NavigationProperty Name="CoverPage" Relationship="cds_zwm_maintenanceorder.to_coverpage" FromRole="FromRole_to_coverpage" ToRole="ToRole_to_coverpage"/>
-                <NavigationProperty Name="Signature" Relationship="cds_zwm_maintenanceorder.to_signature" FromRole="FromRole_to_signature" ToRole="ToRole_to_signature"/>
-                <NavigationProperty Name="PDFStandard" Relationship="cds_zwm_maintenanceorder.to_pdfstandard" FromRole="FromRole_to_pdfstandard" ToRole="ToRole_to_pdfstandard"/>
-                <NavigationProperty Name="Hierarchy" Relationship="cds_zwm_maintenanceorder.to_Hierarchy" FromRole="FromRole_to_Hierarchy" ToRole="ToRole_to_Hierarchy"/>
-                <NavigationProperty Name="Header" Relationship="cds_zwm_maintenanceorder.to_header" FromRole="FromRole_to_header" ToRole="ToRole_to_header"/>
-                <NavigationProperty Name="Footer" Relationship="cds_zwm_maintenanceorder.to_Footer" FromRole="FromRole_to_Footer" ToRole="ToRole_to_Footer"/>
+                <NavigationProperty Name="Format" Relationship="cds_zwm_mainorderoperanalysis.to_format" FromRole="FromRole_to_format" ToRole="ToRole_to_format"/>
+                <NavigationProperty Name="TableColumns" Relationship="cds_zwm_mainorderoperanalysis.to_tablecolumns" FromRole="FromRole_to_tablecolumns" ToRole="ToRole_to_tablecolumns"/>
+                <NavigationProperty Name="CoverPage" Relationship="cds_zwm_mainorderoperanalysis.to_coverpage" FromRole="FromRole_to_coverpage" ToRole="ToRole_to_coverpage"/>
+                <NavigationProperty Name="Signature" Relationship="cds_zwm_mainorderoperanalysis.to_signature" FromRole="FromRole_to_signature" ToRole="ToRole_to_signature"/>
+                <NavigationProperty Name="PDFStandard" Relationship="cds_zwm_mainorderoperanalysis.to_pdfstandard" FromRole="FromRole_to_pdfstandard" ToRole="ToRole_to_pdfstandard"/>
+                <NavigationProperty Name="Hierarchy" Relationship="cds_zwm_mainorderoperanalysis.to_Hierarchy" FromRole="FromRole_to_Hierarchy" ToRole="ToRole_to_Hierarchy"/>
+                <NavigationProperty Name="Header" Relationship="cds_zwm_mainorderoperanalysis.to_header" FromRole="FromRole_to_header" ToRole="ToRole_to_header"/>
+                <NavigationProperty Name="Footer" Relationship="cds_zwm_mainorderoperanalysis.to_Footer" FromRole="FromRole_to_Footer" ToRole="ToRole_to_Footer"/>
             </EntityType>
             <EntityType Name="SAP__Format" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Id"/>
                 </Key>
-                <Property Name="FitToPage" Type="cds_zwm_maintenanceorder.SAP__FitToPage" Nullable="false"/>
+                <Property Name="FitToPage" Type="cds_zwm_mainorderoperanalysis.SAP__FitToPage" Nullable="false"/>
                 <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FontSize" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Orientation" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -225,18 +258,18 @@
                 <Key>
                     <PropertyRef Name="Id"/>
                 </Key>
-                <Property Name="Right" Type="cds_zwm_maintenanceorder.SAP__HeaderFooterField" Nullable="false"/>
-                <Property Name="Left" Type="cds_zwm_maintenanceorder.SAP__HeaderFooterField" Nullable="false"/>
-                <Property Name="Center" Type="cds_zwm_maintenanceorder.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Right" Type="cds_zwm_mainorderoperanalysis.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Left" Type="cds_zwm_mainorderoperanalysis.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Center" Type="cds_zwm_mainorderoperanalysis.SAP__HeaderFooterField" Nullable="false"/>
                 <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="SAP__PDFFooter" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Id"/>
                 </Key>
-                <Property Name="Right" Type="cds_zwm_maintenanceorder.SAP__HeaderFooterField" Nullable="false"/>
-                <Property Name="Left" Type="cds_zwm_maintenanceorder.SAP__HeaderFooterField" Nullable="false"/>
-                <Property Name="Center" Type="cds_zwm_maintenanceorder.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Right" Type="cds_zwm_mainorderoperanalysis.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Left" Type="cds_zwm_mainorderoperanalysis.SAP__HeaderFooterField" Nullable="false"/>
+                <Property Name="Center" Type="cds_zwm_mainorderoperanalysis.SAP__HeaderFooterField" Nullable="false"/>
                 <Property Name="Id" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="SAP__ValueHelp" sap:content-version="1">
@@ -256,8 +289,8 @@
                 <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </ComplexType>
             <Association Name="to_format" sap:content-version="1">
-                <End Type="cds_zwm_maintenanceorder.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_format"/>
-                <End Type="cds_zwm_maintenanceorder.SAP__Format" Multiplicity="1" Role="ToRole_to_format"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_format"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__Format" Multiplicity="1" Role="ToRole_to_format"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_to_format">
                         <PropertyRef Name="Id"/>
@@ -268,8 +301,8 @@
                 </ReferentialConstraint>
             </Association>
             <Association Name="to_tablecolumns" sap:content-version="1">
-                <End Type="cds_zwm_maintenanceorder.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_tablecolumns"/>
-                <End Type="cds_zwm_maintenanceorder.SAP__TableColumns" Multiplicity="*" Role="ToRole_to_tablecolumns"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_tablecolumns"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__TableColumns" Multiplicity="*" Role="ToRole_to_tablecolumns"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_to_tablecolumns">
                         <PropertyRef Name="Id"/>
@@ -280,8 +313,8 @@
                 </ReferentialConstraint>
             </Association>
             <Association Name="to_coverpage" sap:content-version="1">
-                <End Type="cds_zwm_maintenanceorder.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_coverpage"/>
-                <End Type="cds_zwm_maintenanceorder.SAP__CoverPage" Multiplicity="*" Role="ToRole_to_coverpage"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_coverpage"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__CoverPage" Multiplicity="*" Role="ToRole_to_coverpage"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_to_coverpage">
                         <PropertyRef Name="Id"/>
@@ -292,8 +325,8 @@
                 </ReferentialConstraint>
             </Association>
             <Association Name="to_signature" sap:content-version="1">
-                <End Type="cds_zwm_maintenanceorder.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_signature"/>
-                <End Type="cds_zwm_maintenanceorder.SAP__Signature" Multiplicity="1" Role="ToRole_to_signature"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_signature"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__Signature" Multiplicity="1" Role="ToRole_to_signature"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_to_signature">
                         <PropertyRef Name="Id"/>
@@ -304,8 +337,8 @@
                 </ReferentialConstraint>
             </Association>
             <Association Name="to_pdfstandard" sap:content-version="1">
-                <End Type="cds_zwm_maintenanceorder.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_pdfstandard"/>
-                <End Type="cds_zwm_maintenanceorder.SAP__PDFStandard" Multiplicity="1" Role="ToRole_to_pdfstandard"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_pdfstandard"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__PDFStandard" Multiplicity="1" Role="ToRole_to_pdfstandard"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_to_pdfstandard">
                         <PropertyRef Name="Id"/>
@@ -316,8 +349,8 @@
                 </ReferentialConstraint>
             </Association>
             <Association Name="to_Hierarchy" sap:content-version="1">
-                <End Type="cds_zwm_maintenanceorder.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Hierarchy"/>
-                <End Type="cds_zwm_maintenanceorder.SAP__Hierarchy" Multiplicity="1" Role="ToRole_to_Hierarchy"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Hierarchy"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__Hierarchy" Multiplicity="1" Role="ToRole_to_Hierarchy"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_to_Hierarchy">
                         <PropertyRef Name="Id"/>
@@ -328,8 +361,8 @@
                 </ReferentialConstraint>
             </Association>
             <Association Name="to_header" sap:content-version="1">
-                <End Type="cds_zwm_maintenanceorder.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_header"/>
-                <End Type="cds_zwm_maintenanceorder.SAP__PDFHeader" Multiplicity="1" Role="ToRole_to_header"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_header"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__PDFHeader" Multiplicity="1" Role="ToRole_to_header"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_to_header">
                         <PropertyRef Name="Id"/>
@@ -340,8 +373,8 @@
                 </ReferentialConstraint>
             </Association>
             <Association Name="to_Footer" sap:content-version="1">
-                <End Type="cds_zwm_maintenanceorder.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Footer"/>
-                <End Type="cds_zwm_maintenanceorder.SAP__PDFFooter" Multiplicity="1" Role="ToRole_to_Footer"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" Multiplicity="1" Role="FromRole_to_Footer"/>
+                <End Type="cds_zwm_mainorderoperanalysis.SAP__PDFFooter" Multiplicity="1" Role="ToRole_to_Footer"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_to_Footer">
                         <PropertyRef Name="Id"/>
@@ -351,59 +384,62 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
-            <EntityContainer Name="cds_zwm_maintenanceorder_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
-                <EntitySet Name="SAP__FormatSet" EntityType="cds_zwm_maintenanceorder.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__PDFStandardSet" EntityType="cds_zwm_maintenanceorder.SAP__PDFStandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_zwm_maintenanceorder.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__CoverPageSet" EntityType="cds_zwm_maintenanceorder.SAP__CoverPage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__SignatureSet" EntityType="cds_zwm_maintenanceorder.SAP__Signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__HierarchySet" EntityType="cds_zwm_maintenanceorder.SAP__Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__PDFHeaderSet" EntityType="cds_zwm_maintenanceorder.SAP__PDFHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__PDFFooterSet" EntityType="cds_zwm_maintenanceorder.SAP__PDFFooter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_zwm_maintenanceorder.SAP__ValueHelp" sap:content-version="1"/>
-                <EntitySet Name="I_CalendarMonthVH" EntityType="cds_zwm_maintenanceorder.I_CalendarMonthVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="I_MaintenanceOrderStdVH" EntityType="cds_zwm_maintenanceorder.I_MaintenanceOrderStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="I_OrderTypeVH" EntityType="cds_zwm_maintenanceorder.I_OrderTypeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="MaintenanceOrder" EntityType="cds_zwm_maintenanceorder.MaintenanceOrderType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="ZI_WM_PermitVH" EntityType="cds_zwm_maintenanceorder.ZI_WM_PermitVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-                <EntitySet Name="SAP__Currencies" EntityType="cds_zwm_maintenanceorder.SAP__Currency" sap:content-version="1"/>
-                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zwm_maintenanceorder.SAP__UnitOfMeasure" sap:content-version="1"/>
-                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_zwm_maintenanceorder.SAP__DocumentDescription" sap:content-version="1"/>
-                <AssociationSet Name="to_FooterSet" Association="cds_zwm_maintenanceorder.to_Footer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+            <EntityContainer Name="cds_zwm_mainorderoperanalysis_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
+                <EntitySet Name="SAP__FormatSet" EntityType="cds_zwm_mainorderoperanalysis.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFStandardSet" EntityType="cds_zwm_mainorderoperanalysis.SAP__PDFStandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_zwm_mainorderoperanalysis.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__CoverPageSet" EntityType="cds_zwm_mainorderoperanalysis.SAP__CoverPage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__SignatureSet" EntityType="cds_zwm_mainorderoperanalysis.SAP__Signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__HierarchySet" EntityType="cds_zwm_mainorderoperanalysis.SAP__Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFHeaderSet" EntityType="cds_zwm_mainorderoperanalysis.SAP__PDFHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__PDFFooterSet" EntityType="cds_zwm_mainorderoperanalysis.SAP__PDFFooter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_zwm_mainorderoperanalysis.SAP__ValueHelp" sap:content-version="1"/>
+                <EntitySet Name="I_CalendarMonthVH" EntityType="cds_zwm_mainorderoperanalysis.I_CalendarMonthVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_MaintenanceOrderStdVH" EntityType="cds_zwm_mainorderoperanalysis.I_MaintenanceOrderStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_OrderTypeVH" EntityType="cds_zwm_mainorderoperanalysis.I_OrderTypeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="MaintOrderOperatnAnalysis" EntityType="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="BPEMCases" EntityType="cds_zwm_mainorderoperanalysis.BPEMCasesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_WM_OperationCode" EntityType="cds_zwm_mainorderoperanalysis.ZI_WM_OperationCodeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_WM_PermitVH" EntityType="cds_zwm_mainorderoperanalysis.ZI_WM_PermitVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_WorkCenterVH" EntityType="cds_zwm_mainorderoperanalysis.ZI_WorkCenterVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="SAP__Currencies" EntityType="cds_zwm_mainorderoperanalysis.SAP__Currency" sap:content-version="1"/>
+                <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zwm_mainorderoperanalysis.SAP__UnitOfMeasure" sap:content-version="1"/>
+                <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" sap:content-version="1"/>
+                <AssociationSet Name="to_FooterSet" Association="cds_zwm_mainorderoperanalysis.to_Footer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Footer"/>
                     <End EntitySet="SAP__PDFFooterSet" Role="ToRole_to_Footer"/>
                 </AssociationSet>
-                <AssociationSet Name="to_headerSet" Association="cds_zwm_maintenanceorder.to_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                <AssociationSet Name="to_headerSet" Association="cds_zwm_mainorderoperanalysis.to_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_header"/>
                     <End EntitySet="SAP__PDFHeaderSet" Role="ToRole_to_header"/>
                 </AssociationSet>
-                <AssociationSet Name="to_formatSet" Association="cds_zwm_maintenanceorder.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                <AssociationSet Name="to_formatSet" Association="cds_zwm_mainorderoperanalysis.to_format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/>
                     <End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/>
                 </AssociationSet>
-                <AssociationSet Name="to_pdfstandardSet" Association="cds_zwm_maintenanceorder.to_pdfstandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                <AssociationSet Name="to_pdfstandardSet" Association="cds_zwm_mainorderoperanalysis.to_pdfstandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_pdfstandard"/>
                     <End EntitySet="SAP__PDFStandardSet" Role="ToRole_to_pdfstandard"/>
                 </AssociationSet>
-                <AssociationSet Name="to_tablecolumnsSet" Association="cds_zwm_maintenanceorder.to_tablecolumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                <AssociationSet Name="to_tablecolumnsSet" Association="cds_zwm_mainorderoperanalysis.to_tablecolumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/>
                     <End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/>
                 </AssociationSet>
-                <AssociationSet Name="to_signatureSet" Association="cds_zwm_maintenanceorder.to_signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                <AssociationSet Name="to_signatureSet" Association="cds_zwm_mainorderoperanalysis.to_signature" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/>
                     <End EntitySet="SAP__SignatureSet" Role="ToRole_to_signature"/>
                 </AssociationSet>
-                <AssociationSet Name="to_coverpageSet" Association="cds_zwm_maintenanceorder.to_coverpage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                <AssociationSet Name="to_coverpageSet" Association="cds_zwm_mainorderoperanalysis.to_coverpage" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/>
                     <End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/>
                 </AssociationSet>
-                <AssociationSet Name="to_HierarchySet" Association="cds_zwm_maintenanceorder.to_Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                <AssociationSet Name="to_HierarchySet" Association="cds_zwm_mainorderoperanalysis.to_Hierarchy" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Hierarchy"/>
                     <End EntitySet="SAP__HierarchySet" Role="ToRole_to_Hierarchy"/>
                 </AssociationSet>
             </EntityContainer>
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
-            <Annotations Target="cds_zwm_maintenanceorder.MaintenanceOrderType/MaintenanceOrder" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintenanceOrder" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Order"/>
@@ -424,7 +460,7 @@
                 </Annotation>
                 <Annotation Term="Common.SemanticObject" String="MaintenanceOrder"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.MaintenanceOrderType/MaintenanceOrderType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintenanceOrderType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Order Type"/>
@@ -447,7 +483,50 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.MaintenanceOrderType/PermitType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/OperationCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="User field 20 chars"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_WM_OperationCode"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="OperationCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="OperationCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OperationName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/WorkCenter" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Work Center"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_WorkCenterVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WorkCenter"/>
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenter"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenterInternalID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenterText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/PermitType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Permit"/>
@@ -467,7 +546,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.MaintenanceOrderType/CalendarMonth" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/CalendarMonth" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
                         <PropertyValue Property="Label" String="Calendar Month"/>
@@ -487,13 +566,30 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.cds_zwm_maintenanceorder_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.cds_zwm_mainorderoperanalysis_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.MaintenanceOrderType/ServiceDocument" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.cds_zwm_mainorderoperanalysis_Entities/MaintOrderOperatnAnalysis" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="ConfirmPostingDate"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/ServiceDocument" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.SemanticObject" String="ServiceOrder"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.cds_zwm_maintenanceorder_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintOrderConfirmation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="MaintOrderConfirmation"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.cds_zwm_mainorderoperanalysis_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
                     <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
                         <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
@@ -536,18 +632,18 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.Text" Path="Text"/>
                 <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
                 <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__UnitOfMeasure/UnitCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__UnitOfMeasure/UnitCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.Text" Path="Text"/>
                 <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
                 <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
                 <Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.AlternateKeys">
                     <Collection>
                         <Record>
@@ -563,13 +659,13 @@
                     </Collection>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__DocumentDescription/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.Computed"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__DocumentDescription/CreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription/CreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.Computed"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__DocumentDescription" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__DocumentDescription" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__capabilties.InsertRestrictions">
                     <Record>
                         <PropertyValue Property="Insertable" Bool="false"/>
@@ -607,7 +703,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__Format/FitToPage/ErrorRecoveryBehavior" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__Format/FitToPage/ErrorRecoveryBehavior" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -616,7 +712,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__Format/FontName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__Format/FontName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -625,7 +721,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__Format/PaperSize" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__Format/PaperSize" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -634,7 +730,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__PDFHeader/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__PDFHeader/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -643,7 +739,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__PDFHeader/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__PDFHeader/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -652,7 +748,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__PDFHeader/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__PDFHeader/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -661,7 +757,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__PDFFooter/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__PDFFooter/Left" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -670,7 +766,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__PDFFooter/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__PDFFooter/Right" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -679,7 +775,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__PDFFooter/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__PDFFooter/Center" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -688,7 +784,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__Format/Orientation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__Format/Orientation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -697,7 +793,7 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <Annotations Target="cds_zwm_maintenanceorder.SAP__TableColumns/HorizontalAlignment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.SAP__TableColumns/HorizontalAlignment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.ValueListReferences">
                     <Record>
                         <PropertyValue Property="Url" String="./$metadata"/>
@@ -706,8 +802,8 @@
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
             </Annotations>
-            <atom:link rel="self" href="http://sapsdvapp.aws.londonhydro.cloud:8000/sap/opu/odata/sap/ZUI_MAINTENANCEORDER/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="http://sapsdvapp.aws.londonhydro.cloud:8000/sap/opu/odata/sap/ZUI_MAINTENANCEORDER/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="self" href="http://sapsdvapp.aws.londonhydro.cloud:8000/sap/opu/odata/SAP/ZUI_MAINORDEROPERATNANALYS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapsdvapp.aws.londonhydro.cloud:8000/sap/opu/odata/SAP/ZUI_MAINORDEROPERATNANALYS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

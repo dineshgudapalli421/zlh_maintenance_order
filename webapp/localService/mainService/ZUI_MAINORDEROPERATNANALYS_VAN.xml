@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zui_mainorderoperatnanalys/$metadata">
+        <edmx:Include Namespace="ZUI_MAINORDEROPERATNANALYS" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zui_mainorderoperatnanalys_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintenanceNotification">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintenanceOrderDesc">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/ServiceDocument">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MeterNumber">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/DeviceLocation">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/City">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/District">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/PostalCode">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/OperationDescription">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/NumberOfDays">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/NmbrOfMaintOrderOperations">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/CalendarDay">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/CreationDate">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/CreationTime">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/CreatedByUser">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/LastChangeByUser">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/LastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/OrderTypeName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintOrderOperationCounter">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintenanceOrderInternalID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintOrderOperationlID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/MaintOrderOperationInternalID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/OperationName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/OperationWorkCenterTypeCode">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/OperationWorkCenterInternalID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/OperationControlKey">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/CalendarQuarter">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/CalendarQuarterName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/CalendarMonthName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType/WeekDayName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.MaintOrderOperatnAnalysisType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Maintenance Order"/>
+                            <PropertyValue Property="ID" String="MaintenanceOrderFacet"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Maintenance Order Details"/>
+                                        <PropertyValue Property="ID" String="MaintenanceOrderDataFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#MaintenaceOrder"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Status"/>
+                                        <PropertyValue Property="ID" String="StatusFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#OrderStatus"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Address Data"/>
+                                        <PropertyValue Property="ID" String="AddressFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#AdressData"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Permit Data"/>
+                                        <PropertyValue Property="ID" String="PermitFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#PermitData"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Additional Data"/>
+                                        <PropertyValue Property="ID" String="AdditionalFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#AdditionalData"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Billing"/>
+                            <PropertyValue Property="ID" String="OperationFacet"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Operation Details"/>
+                                        <PropertyValue Property="ID" String="OperationDataFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#Operation"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Status"/>
+                                        <PropertyValue Property="ID" String="OperationStatusFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#OperationStatus"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Amount Data"/>
+                                        <PropertyValue Property="ID" String="ConfirmationFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#Confirmation"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="BPEM Cases"/>
+                            <PropertyValue Property="ID" String="FollowUpFacet"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="BPEM Cases"/>
+                                        <PropertyValue Property="ID" String="MaintenanceOrderDataFacet"/>
+                                        <PropertyValue Property="Target" String="UI.FACET$12$">
+                                            <Annotation Term="Core.Messages">
+                                                <Collection>
+                                                    <Record>
+                                                        <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-000"/>
+                                                        <PropertyValue Property="message" String="Navigation property '_BPEMCaseObject' of annotation 'UI.FACET$12$' in proj./view 'MaintOrderOperatnAnalysis' not found"/>
+                                                        <PropertyValue Property="severity" String="error"/>
+                                                    </Record>
+                                                </Collection>
+                                            </Annotation>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Dates">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ConfirmPostingDate"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Label" String="Dates"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Maintenance Order Operation"/>
+                        <PropertyValue Property="TypeNamePlural" String="Maintenance Order Operations"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Operation"/>
+                                <PropertyValue Property="Value" Path="MaintenanceOrderOperation"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="AdditionalData">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Creation Data"/>
+                            <PropertyValue Property="Value" Path="CreationDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Creation Time"/>
+                            <PropertyValue Property="Value" Path="CreationTime"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Created By"/>
+                            <PropertyValue Property="Value" Path="CreatedByUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Changed By"/>
+                            <PropertyValue Property="Value" Path="LastChangeByUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Changed Date/Time"/>
+                            <PropertyValue Property="Value" Path="LastChangeDateTime"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="AdressData">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Premise"/>
+                            <PropertyValue Property="Value" Path="UtilitiesPremise"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Functional Location"/>
+                            <PropertyValue Property="Value" Path="DeviceLocation"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Meter Number"/>
+                            <PropertyValue Property="Value" Path="MeterNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="House Number"/>
+                            <PropertyValue Property="Value" Path="HouseNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Street Name"/>
+                            <PropertyValue Property="Value" Path="Street"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="City"/>
+                            <PropertyValue Property="Value" Path="City"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="District"/>
+                            <PropertyValue Property="Value" Path="District"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Postal Code"/>
+                            <PropertyValue Property="Value" Path="PostalCode"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="Confirmation">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Confirmation Number"/>
+                            <PropertyValue Property="Value" Path="MaintOrderConfirmation"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Entry Date"/>
+                            <PropertyValue Property="Value" Path="ConfirmEntryDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Entered By"/>
+                            <PropertyValue Property="Value" Path="ConfirmEntryUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Confirmation Posting Date"/>
+                            <PropertyValue Property="Value" Path="ConfirmPostingDate"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="MaintenaceOrder">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Order Type"/>
+                            <PropertyValue Property="Value" Path="MaintenanceOrderType"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="ID"/>
+                            <PropertyValue Property="Value" Path="MaintenanceOrder"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="Operation">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Operation Number"/>
+                            <PropertyValue Property="Value" Path="MaintenanceOrderOperation"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Description"/>
+                            <PropertyValue Property="Value" Path="OperationDescription"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Operation Code"/>
+                            <PropertyValue Property="Value" Path="OperationCode"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="OperationStatus">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="User Status"/>
+                            <PropertyValue Property="Value" Path="OperationUserStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="System Status"/>
+                            <PropertyValue Property="Value" Path="OperationSystemStatus"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="OrderStatus">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="System Status"/>
+                            <PropertyValue Property="Value" Path="OrderSystemStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="User Status"/>
+                            <PropertyValue Property="Value" Path="OrderUserStatus"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="PermitData">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Permit Type"/>
+                            <PropertyValue Property="Value" Path="PermitType"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Permit Number"/>
+                            <PropertyValue Property="Value" Path="PermitNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Created By"/>
+                            <PropertyValue Property="Value" Path="PermitCreatedByUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Creation Date"/>
+                            <PropertyValue Property="Value" Path="PermitCreationDate"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Maintenance Order"/>
+                            <PropertyValue Property="Value" Path="MaintenanceOrder"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Operation"/>
+                            <PropertyValue Property="Value" Path="MaintenanceOrderOperation"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Order Type"/>
+                            <PropertyValue Property="Value" Path="MaintenanceOrderType"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Order Description"/>
+                            <PropertyValue Property="Value" Path="MaintenanceOrderDesc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Order System Status"/>
+                            <PropertyValue Property="Value" Path="OrderSystemStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Order User Status"/>
+                            <PropertyValue Property="Value" Path="OrderUserStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Premise"/>
+                            <PropertyValue Property="Value" Path="UtilitiesPremise"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Functional Location"/>
+                            <PropertyValue Property="Value" Path="DeviceLocation"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="House Number"/>
+                            <PropertyValue Property="Value" Path="HouseNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Street Name"/>
+                            <PropertyValue Property="Value" Path="Street"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Operation Code"/>
+                            <PropertyValue Property="Value" Path="OperationCode"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="WorkCenter"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Operation Description"/>
+                            <PropertyValue Property="Value" Path="OperationDescription"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Operation System Status"/>
+                            <PropertyValue Property="Value" Path="OperationSystemStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Operation User Status"/>
+                            <PropertyValue Property="Value" Path="OperationUserStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Permit Type"/>
+                            <PropertyValue Property="Value" Path="PermitType"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Permit Number"/>
+                            <PropertyValue Property="Value" Path="PermitNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Permit Created By"/>
+                            <PropertyValue Property="Value" Path="PermitCreatedByUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Permit Date"/>
+                            <PropertyValue Property="Value" Path="PermitCreationDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Number Of Days"/>
+                            <PropertyValue Property="Value" Path="NumberOfDays"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Confirmation"/>
+                            <PropertyValue Property="Value" Path="MaintOrderConfirmation"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Confirm Entry Date"/>
+                            <PropertyValue Property="Value" Path="ConfirmEntryDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Confirm By"/>
+                            <PropertyValue Property="Value" Path="ConfirmEntryUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ConfirmPostingDate"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Calendar Month"/>
+                            <PropertyValue Property="Value" Path="CalendarMonth"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Calendar Year"/>
+                            <PropertyValue Property="Value" Path="CalendarYear"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>MaintenanceOrder</PropertyPath>
+                        <PropertyPath>MaintenanceOrderType</PropertyPath>
+                        <PropertyPath>OperationCode</PropertyPath>
+                        <PropertyPath>WorkCenter</PropertyPath>
+                        <PropertyPath>CalendarMonth</PropertyPath>
+                        <PropertyPath>PermitType</PropertyPath>
+                        <PropertyPath>CalendarYear</PropertyPath>
+                        <PropertyPath>ConfirmPostingDate</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.BPEMCasesType/BPEMCaseObjectSequenceNumber">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.BPEMCasesType/BPEMCaseCategoryName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.BPEMCasesType/BPEMCaseObjectRefObjectType">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.BPEMCasesType/BPEMCaseObjectRefObject">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.BPEMCasesType/BPEMCaseStatusName">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.BPEMCasesType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Case Number"/>
+                            <PropertyValue Property="Value" Path="BPEMCase"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Description"/>
+                            <PropertyValue Property="Value" Path="BPEMCaseName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Case Category"/>
+                            <PropertyValue Property="Value" Path="BPEMCaseCategory"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Case Status"/>
+                            <PropertyValue Property="Value" Path="BPEMCaseStatus"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zwm_mainorderoperanalysis.ZI_WorkCenterVHType/WorkCenterInternalID">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
